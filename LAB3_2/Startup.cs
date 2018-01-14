@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using LAB3_2.DAL.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace LAB3_2
 {
@@ -22,6 +24,7 @@ namespace LAB3_2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<LAB_3Context>(options => options.UseSqlServer(Configuration["connStr"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
